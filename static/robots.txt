@@ -1,0 +1,3 @@
+User-agent: *
+
+sitemap: https://andrewnbishop.com/updated-blog/sitemap.xml

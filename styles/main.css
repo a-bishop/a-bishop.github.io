@@ -1,0 +1,27 @@
+.wave {
+    animation-name: wave-animation;  
+    animation-duration: 2.5s;        
+    transform-origin: 70% 70%;      
+    display: inline-block;
+  }
+  
+  @keyframes wave-animation {
+      0% { transform: rotate( 0.0deg) }
+     10% { transform: rotate(12.0deg) }
+     20% { transform: rotate(-6.0deg) }
+     30% { transform: rotate(12.0deg) }
+     40% { transform: rotate( -2.0deg) } 
+    60% { transform: rotate( 0.0deg) }
+    100% { transform: rotate( 0.0deg) }
+  }
+
+@media only screen and (max-width: 600px) {
+  .full-width-mobile {
+    width: 100vw;
+    position: relative;
+    left: 50%;
+    right: 50%;
+    margin-left: -50vw;
+    margin-right: -50vw;
+  }
+}
