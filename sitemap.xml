@@ -3,7 +3,6 @@
 <url> <loc>https://andrewnbishop.com/</loc> <changefreq>daily</changefreq> <priority>0.7</priority> </url>
 <url> <loc>https://andrewnbishop.com/blog</loc> <changefreq>daily</changefreq> <priority>0.7</priority> </url>
 <url> <loc>https://andrewnbishop.com/tags</loc> <changefreq>daily</changefreq> <priority>0.7</priority> </url>
-<url> <loc>https://andrewnbishop.com/docker-debugging</loc> <changefreq>daily</changefreq> <priority>0.7</priority> </url>
 <url> <loc>https://andrewnbishop.com/wrapping-mocha-tests-with-a-custom-retry-handler</loc> <changefreq>daily</changefreq> <priority>0.7</priority> </url>
 <url> <loc>https://andrewnbishop.com/working-with-web-views-in-react-native</loc> <changefreq>daily</changefreq> <priority>0.7</priority> </url>
 <url> <loc>https://andrewnbishop.com/making-react-and-d-3-get-along</loc> <changefreq>daily</changefreq> <priority>0.7</priority> </url>
@@ -11,8 +10,6 @@
 <url> <loc>https://andrewnbishop.com/about</loc> <changefreq>daily</changefreq> <priority>0.7</priority> </url>
 <url> <loc>https://andrewnbishop.com/tags/chai</loc> <changefreq>daily</changefreq> <priority>0.7</priority> </url>
 <url> <loc>https://andrewnbishop.com/tags/d-3</loc> <changefreq>daily</changefreq> <priority>0.7</priority> </url>
-<url> <loc>https://andrewnbishop.com/tags/debugging</loc> <changefreq>daily</changefreq> <priority>0.7</priority> </url>
-<url> <loc>https://andrewnbishop.com/tags/docker</loc> <changefreq>daily</changefreq> <priority>0.7</priority> </url>
 <url> <loc>https://andrewnbishop.com/tags/java-script</loc> <changefreq>daily</changefreq> <priority>0.7</priority> </url>
 <url> <loc>https://andrewnbishop.com/tags/mocha</loc> <changefreq>daily</changefreq> <priority>0.7</priority> </url>
 <url> <loc>https://andrewnbishop.com/tags/react</loc> <changefreq>daily</changefreq> <priority>0.7</priority> </url>
