@@ -26,11 +26,13 @@ function withAttempts(totalAttempts, testFunc) {
     const retryCount = this.runnable().currentRetry();
     const attemptCount = retryCount + 1;
 
-    // if it's the first run of the test, set the number of desired retries.
+    // if it's the first run of the test, 
+    // set the number of desired retries.
     if (!retryCount) this.retries(totalAttempts - 1);
     else debug(`retry: ${this.test.title}`);
 
-    // define a weightedSleep function, with the attemptCount bound via closure
+    // define a weightedSleep function, 
+    // with the attemptCount bound via closure
     function weightedSleep(milliseconds, options) {
       return sleep(
         getWeightedValue(milliseconds, { attemptCount, ...options })
@@ -38,7 +40,8 @@ function withAttempts(totalAttempts, testFunc) {
     }
 
     try {
-      // run the test and pass in an object with the timeout function and the attempt count
+      // run the test and pass in an object with the timeout function 
+      // and the attempt count
       return await testFunc({ weightedSleep, attemptCount });
     } catch (e) {
       debug(`error: ${e}`);
@@ -52,11 +55,7 @@ function sleep(milliseconds) {
   return new Promise(resolve => setTimeout(resolve, milliseconds));
 }
 
-// Increase a value by the given factor based on the attempt count.
-// For example, if the initial value is 1000, with a default increment
-// factor of 0.5 (50%), if the attempt count is 1 the return value will be 1000,
-// if the attempt count is 2 the return value will be 1500, and if the attempt
-// count is 3 the return value will be 2000.
+// Increase a value by the given factor based on the attempt count
 function getWeightedValue(value, { attemptCount = 1, incrementFactor = 0.5 }) {
   return attemptCount > 1
     ? value + value * attemptCount * incrementFactor
