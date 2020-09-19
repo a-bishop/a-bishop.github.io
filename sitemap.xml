@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9" xmlns:news="http://www.google.com/schemas/sitemap-news/0.9" xmlns:xhtml="http://www.w3.org/1999/xhtml" xmlns:mobile="http://www.google.com/schemas/sitemap-mobile/1.0" xmlns:image="http://www.google.com/schemas/sitemap-image/1.1" xmlns:video="http://www.google.com/schemas/sitemap-video/1.1">
+<url> <loc>https://andrewnbishop.com/</loc> <changefreq>daily</changefreq> <priority>0.7</priority> </url>
+<url> <loc>https://andrewnbishop.com/blog</loc> <changefreq>daily</changefreq> <priority>0.7</priority> </url>
+<url> <loc>https://andrewnbishop.com/tags</loc> <changefreq>daily</changefreq> <priority>0.7</priority> </url>
+<url> <loc>https://andrewnbishop.com/wrapping-mocha-tests-with-a-custom-retry-handler</loc> <changefreq>daily</changefreq> <priority>0.7</priority> </url>
+<url> <loc>https://andrewnbishop.com/working-with-web-views-in-react-native</loc> <changefreq>daily</changefreq> <priority>0.7</priority> </url>
+<url> <loc>https://andrewnbishop.com/making-react-and-d-3-get-along</loc> <changefreq>daily</changefreq> <priority>0.7</priority> </url>
+<url> <loc>https://andrewnbishop.com/projects</loc> <changefreq>daily</changefreq> <priority>0.7</priority> </url>
+<url> <loc>https://andrewnbishop.com/about</loc> <changefreq>daily</changefreq> <priority>0.7</priority> </url>
+<url> <loc>https://andrewnbishop.com/tags/chai</loc> <changefreq>daily</changefreq> <priority>0.7</priority> </url>
+<url> <loc>https://andrewnbishop.com/tags/d-3</loc> <changefreq>daily</changefreq> <priority>0.7</priority> </url>
+<url> <loc>https://andrewnbishop.com/tags/java-script</loc> <changefreq>daily</changefreq> <priority>0.7</priority> </url>
+<url> <loc>https://andrewnbishop.com/tags/mocha</loc> <changefreq>daily</changefreq> <priority>0.7</priority> </url>
+<url> <loc>https://andrewnbishop.com/tags/react</loc> <changefreq>daily</changefreq> <priority>0.7</priority> </url>
+<url> <loc>https://andrewnbishop.com/tags/react-native</loc> <changefreq>daily</changefreq> <priority>0.7</priority> </url>
+<url> <loc>https://andrewnbishop.com/tags/testing</loc> <changefreq>daily</changefreq> <priority>0.7</priority> </url>
+<url> <loc>https://andrewnbishop.com/tags/i-os</loc> <changefreq>daily</changefreq> <priority>0.7</priority> </url>
+</urlset>
