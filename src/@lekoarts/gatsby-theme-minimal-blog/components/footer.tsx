@@ -1,8 +1,6 @@
 /** @jsx jsx */
 import { jsx } from "theme-ui"
 import cc from "../images/cc.svg";
-import nc from "../images/nc.svg";
-import by from "../images/by.svg";
 
 const Image = ({src, alt}) => <img src={src} alt={alt} width="14px" sx={{ ml: [1]}}></img>
 
@@ -25,17 +23,17 @@ const Footer = () => {
         fontSize: [0],
       }}
     >
-      <a href="https://creativecommons.org/licenses/by-nc/4.0/" style={{ display: "flex", alignItems: "center" }}>
+      <a
+        href="https://creativecommons.org/licenses/by-nc/4.0/"
+        style={{ display: "flex", alignItems: "center" }}
+      >
         <Image src={cc} alt="Creative Commons" />
-        <Image src={by} alt="Attibution" />
-        <Image src={nc} alt="Non-commercial" />
       </a>
-      <div sx={{ ml: [1] }}>
-        {new Date().getFullYear()} Andrew Bishop. Built with
+      <div sx={{ ml: [1] }}>{new Date().getFullYear()} Andrew Bishop.</div>
+      <div sx={{ ml: [2] }}>
+        Built with
+        <a href="https://www.gatsbyjs.com/"> Gatsby</a>
       </div>
-      <a sx={{ ml: [1] }} href="https://www.gatsbyjs.com/">
-        Gatsby
-      </a>
     </footer>
   );
 }
