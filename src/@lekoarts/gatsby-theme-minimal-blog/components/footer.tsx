@@ -31,8 +31,7 @@ const Footer = () => {
       </a>
       <div sx={{ ml: [1] }}>{new Date().getFullYear()} Andrew Bishop.</div>
       <div sx={{ ml: [2] }}>
-        Built with
-        <a href="https://www.gatsbyjs.com/"> Gatsby</a>
+        Made with{" "}<a href="https://www.gatsbyjs.com/">Gatsby</a>
       </div>
     </footer>
   );
