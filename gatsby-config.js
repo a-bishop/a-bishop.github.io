@@ -12,7 +12,7 @@ module.exports = {
     author: `@andrew_n_bishop`,
     siteDescription: `Portfolio site for software developer Andrew Bishop`,
     siteLanguage: `en`,
-    siteImage: `/banner.jpg`,
+    siteImage: `/favicon.ico`,
     siteUrl: `https://andrewnbishop.com`,
   },
   plugins: [
