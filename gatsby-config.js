@@ -12,7 +12,7 @@ module.exports = {
     author: `@andrew_n_bishop`,
     siteDescription: `Portfolio site for software developer Andrew Bishop`,
     siteLanguage: `en`,
-    siteImage: `/banner.jpg`,
+    siteImage: `/favicon.ico`,
     siteUrl: `https://andrewnbishop.com`,
   },
   plugins: [
@@ -64,6 +64,7 @@ module.exports = {
         background_color: `#fff`,
         theme_color: `#6B46C1`,
         display: `standalone`,
+        icon: `src/images/favicon.png`
       },
     },
     `gatsby-plugin-offline`,

@@ -30,7 +30,7 @@ const Page = ({ data: { page } }: PageProps) => (
     >
       <Heading variant="styles.h3">{page.title}</Heading>
     </Flex>
-    <section sx={{ my: 5, variant: `layout.content` }}>
+    <section sx={{ my: [4, 5], variant: `layout.content` }}>
       <MDXRenderer>{page.body}</MDXRenderer>
     </section>
   </Layout>
