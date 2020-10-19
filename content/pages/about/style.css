@@ -1,9 +1,0 @@
-
-.internal-link {
-  text-decoration: none;
-  color: var(--theme-ui-colors-primary,#6b46c1);
-}
-
-.internal-link:hover {
-  text-decoration: underline;
-}
