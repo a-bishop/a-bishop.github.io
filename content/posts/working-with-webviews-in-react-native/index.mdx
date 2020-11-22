@@ -5,28 +5,27 @@ tags:
   - React
   - React Native
   - JavaScript
-  - iOS
 ---
 
-Sometimes it is too resource-intensive to recreate the interface and business logic of a complex web application in React Native. For those instances, the framework allows us to simply embed existing web pages in our apps with the WebView component. Let's look at some of the functionality exposed through the WebView API.
+When refactoring web applications to their native counterpart using React Native, constrained project budgets or timelines can hold development teams back from recreating the entire front-end interface natively. For those instances, the framework allows us to embed existing web pages in our apps with the WebView component, while giving us control over certain aspects of the page's display and user interactions. Let's look at some of the functionality exposed through the WebView API.
 
 #### Getting started
 
 The React Native team is planning the [imminent removal of WebViews](https://facebook.github.io/react-native/docs/webview) from the core library as part of its efforts to reduce the framework's size. As a result, we'll need to import the WebView component from a separate package, namely `react-native-webview`. So, let's `npm install` it into our existing React Native project to get started.
 
-```noLineNumbers
+```bash:noLineNumbers
 npm install react-native-webview
 ```
 
 Then, import it into the component where we'd like to render a WebView.
 
-```noLineNumbers
-import { WebView } from "react-native-webview"
+```jsx
+import { WebView } from "react-native-webview";
 ```
 
 Using the WebView component couldn't be easier. Just pass it a `source` prop, which will be an object with key of "uri" and a value of the web address to render in the component.
 
-```noLineNumbers
+```jsx
 <WebView source={{ uri: "https://example.com" }} />
 ```
 
@@ -125,31 +124,31 @@ const WebViewComponent = () => {
 
 One of the most powerful features of WebViews is the ability to inject JavaScript to do things like remove page elements, disable buttons, and attach event handlers to the JavaScript code within the webpage. For this functionality there are two props that the WebView can take, `injectJavascript` and `injectedJavascript`.
 
-`InjectedJavascript` only gets evaluated once on load of the WebView, so for most use-cases you'll probably want to use the `injectJavascript` API, which runs for the full lifetime of the component. I encountered errors when trying to inject the JavaScript directly, until I started experimenting with wrapping the code in a `setTimeout()` function to add it to the event loop.
-
-Used in conjuction with the `onMessage` and `postMessage` APIs, one can create two-way communication channels between the React Native code and the WebView quite easily. In the example below, the WebView component communicates to React Native when it detects that a user has submitted a form element on the webpage.
+`injectedJavascript` only gets evaluated once on load of the WebView, so for most use-cases you'll probably want to use the `injectJavascript` function, which runs for the full lifetime of the component. Used in conjuction with the `onMessage` and `postMessage` APIs, one can create two-way communication channels between the React Native code and the WebView quite easily. In the example below, the WebView component communicates to React Native when it detects that a user has submitted a form element on the webpage.
 
 ```jsx
-import { useRef, useState } from "react";
+import { useRef, useState, useEffect } from "react";
 import { WebView } from "react-native-webview";
+
+// needs to be wrapped in a setTimeout function to add the js to the event loop
+const jsToInject = `
+  setTimeout(() => {
+      document.getElementById("submit-form").addEventListener("submit", function(){
+          window.ReactNativeWebView.postMessage("yahhh! form submitted")
+      });
+  }, 0);
+`;
 
 const WebViewComponent = () => {
   const [formSubmitted, setFormSubmitted] = useState(false);
 
   const wvRef = useRef();
 
-  const jsToInject = `
-    setTimeout(() => {
-        document.getElementById("submit-form").addEventListener("submit", function(){
-            window.ReactNativeWebView.postMessage("form submitted")
-        });
-        true;
-    }, 0);
-  `;
-
-  if (wvRef.current !== undefined) {
-    wvRef.current.injectJavaScript(jsToInject);
-  }
+  useEffect(() => {
+    if (wvRef.current) {
+      wvRef.current.injectJavaScript(jsToInject);
+    }
+  }, [wvRef])
 
   return (
     <>
@@ -157,7 +156,7 @@ const WebViewComponent = () => {
         ref={wvRef}
         source={{ uri: "https://a-page-with-a-form.com" }}
         onMessage={event => {
-          console.log(event.nativeEvent.data); // "form submitted"
+          console.log(event.nativeEvent.data); // "yahhh! form submitted"
           setFormSubmitted(true);
         }}
       />

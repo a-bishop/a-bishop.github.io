@@ -30,8 +30,7 @@ const code = {
     display: `inline-block`,
   },
   "p > code, li > code": {
-    bg: `gray.3`,
-    color: `gray.8`,
+    color: `red.7`,
     px: 1,
     py: 1,
     borderRadius: `2px`,
@@ -46,6 +45,9 @@ const code = {
     mx: [0, 0, 0, -3],
     ".token-line": {
       mx: -3,
+    },
+    "pre": {
+      mt: 0,
     },
     "pre.language-": {
       mt: 0,

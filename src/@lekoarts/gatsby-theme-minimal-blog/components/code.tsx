@@ -76,7 +76,7 @@ const Code = ({
   const shouldHighlightLine = calculateLinesToHighlight(metastring);
 
   const hasLineNumbers =
-    !noLineNumbers && language !== `noLineNumbers` && showLineNumbers;
+    !noLineNumbers && !language.match(`noLineNumbers`) && showLineNumbers;
 
   if (props[`react-live`]) {
     return (
