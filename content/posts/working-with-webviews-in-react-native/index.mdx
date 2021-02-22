@@ -7,7 +7,7 @@ tags:
   - JavaScript
 ---
 
-When refactoring web applications to their native counterpart using React Native, constrained project budgets or timelines can hold development teams back from recreating the entire front-end interface natively. For those instances, the framework allows us to embed existing web pages in our apps with the WebView component, while giving us control over certain aspects of the page's display and user interactions. Let's look at some of the functionality exposed through the WebView API.
+For those instances when it's impractical or impossible to re-architect an existing web page in React Native, the framework allows us to simply embed them in our apps with the WebView component. Let's look at some of the functionality exposed through the WebView API.
 
 #### Getting started
 
@@ -20,13 +20,13 @@ npm install react-native-webview
 Then, import it into the component where we'd like to render a WebView.
 
 ```jsx
-import { WebView } from "react-native-webview";
+import { WebView } from 'react-native-webview';
 ```
 
 Using the WebView component couldn't be easier. Just pass it a `source` prop, which will be an object with key of "uri" and a value of the web address to render in the component.
 
 ```jsx
-<WebView source={{ uri: "https://example.com" }} />
+<WebView source={{ uri: 'https://example.com' }} />
 ```
 
 #### Useful WebView Properties and APIs
@@ -63,17 +63,17 @@ const WebViewComponent = () => {
 Another useful prop when working with WebViews is `onNavigationStateChange`. With this prop, we can expose an object representing the navigation state of the component, which will let us do things like create custom forward and back navigation buttons and listen for url changes. To use this prop, you'll also need to define a `ref` to uniquely identify the instance of the WebView.
 
 ```jsx
-import { Button } from "react-native-elements";
-import { useRef, useState } from "react";
-import { View, Dimensions } from "react-native";
-import { WebView } from "react-native-webview";
+import { Button } from 'react-native-elements';
+import { useRef, useState } from 'react';
+import { View, Dimensions } from 'react-native';
+import { WebView } from 'react-native-webview';
 
 const WebViewComponent = () => {
   const [canGoBack, setCanGoBack] = useState(false);
   const [canGoForward, setCanGoForward] = useState(false);
-  const [currentUrl, setCurrentUrl] = useState("");
+  const [currentUrl, setCurrentUrl] = useState('');
 
-  const { width } = Dimensions.get("window");
+  const { width } = Dimensions.get('window');
 
   const wvRef = useRef();
 
@@ -94,7 +94,7 @@ const WebViewComponent = () => {
 
   return (
     <>
-      <View style={{ flexDirection: "row", height: 50, width: width }}>
+      <View style={{ flexDirection: 'row', height: 50, width: width }}>
         <Button
           title="< Back"
           disabled={!canGoBack}
@@ -110,8 +110,8 @@ const WebViewComponent = () => {
       </View>
       <WebView
         ref={wvRef}
-        source={{ uri: "https://example.com" }}
-        onNavigationStateChange={navState => {
+        source={{ uri: 'https://example.com' }}
+        onNavigationStateChange={(navState) => {
           setCanGoBack(navState.canGoBack);
           setCanGoForward(navState.canGoForward);
           setCurrentUrl(navState.url);
@@ -127,8 +127,8 @@ One of the most powerful features of WebViews is the ability to inject JavaScrip
 `injectedJavascript` only gets evaluated once on load of the WebView, so for most use-cases you'll probably want to use the `injectJavascript` function, which runs for the full lifetime of the component. Used in conjuction with the `onMessage` and `postMessage` APIs, one can create two-way communication channels between the React Native code and the WebView quite easily. In the example below, the WebView component communicates to React Native when it detects that a user has submitted a form element on the webpage.
 
 ```jsx
-import { useRef, useState, useEffect } from "react";
-import { WebView } from "react-native-webview";
+import { useRef, useState, useEffect } from 'react';
+import { WebView } from 'react-native-webview';
 
 // needs to be wrapped in a setTimeout function to add the js to the event loop
 const jsToInject = `
@@ -148,14 +148,14 @@ const WebViewComponent = () => {
     if (wvRef.current) {
       wvRef.current.injectJavaScript(jsToInject);
     }
-  }, [wvRef])
+  }, [wvRef]);
 
   return (
     <>
       <WebView
         ref={wvRef}
-        source={{ uri: "https://a-page-with-a-form.com" }}
-        onMessage={event => {
+        source={{ uri: 'https://a-page-with-a-form.com' }}
+        onMessage={(event) => {
           console.log(event.nativeEvent.data); // "yahhh! form submitted"
           setFormSubmitted(true);
         }}
@@ -164,7 +164,6 @@ const WebViewComponent = () => {
   );
 };
 ```
-
 
 #### Conclusion
 

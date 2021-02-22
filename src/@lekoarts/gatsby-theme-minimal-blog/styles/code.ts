@@ -1,9 +1,9 @@
-import { tint } from "@theme-ui/color"
+import { tint } from '@theme-ui/color';
 
 const code = {
   "[data-name='live-editor']": {
     fontSize: 1,
-    "textarea, pre": {
+    'textarea, pre': {
       padding: (t: any) => `${t.space[3]} !important`,
     },
   },
@@ -11,7 +11,7 @@ const code = {
     padding: (t: any) => `calc(${t.space[2]} + 10px) !important`,
     backgroundColor: tint(`primary`, 0.7),
   },
-  ".prism-code": {
+  '.prism-code': {
     fontSize: [1, 1, 2],
     padding: 3,
     webkitOverflowScrolling: `touch`,
@@ -21,21 +21,20 @@ const code = {
     minWidth: `100%`,
     mb: 0,
     '&[data-linenumber="false"]': {
-      ".token-line": {
+      '.token-line': {
         pl: 3,
       },
     },
   },
-  ".token": {
+  '.token': {
     display: `inline-block`,
   },
-  "p > code, li > code": {
-    color: `red.7`,
+  'p > code, li > code': {
     px: 1,
     py: 1,
     borderRadius: `2px`,
   },
-  ".gatsby-highlight": {
+  '.gatsby-highlight': {
     fontSize: [1, 1, 2],
     position: `relative`,
     webkitOverflowScrolling: `touch`,
@@ -43,16 +42,16 @@ const code = {
     overflow: `auto`,
     borderRadius: `2px`,
     mx: [0, 0, 0, -3],
-    ".token-line": {
+    '.token-line': {
       mx: -3,
     },
-    "pre": {
+    pre: {
       mt: 0,
     },
-    "pre.language-": {
+    'pre.language-': {
       mt: 0,
     },
-    "pre.language-noLineNumbers": {
+    'pre.language-noLineNumbers': {
       mt: 0,
     },
     'pre[class*="language-"]:before': {
@@ -107,22 +106,17 @@ const code = {
       background: `#f9ac00`,
       color: `black`,
     },
-    'pre[class~="language-text"]:before': {
-    },
-    "pre[class~='language-shell']:before": {
-    },
-    "pre[class~='language-sh']:before": {
-    },
-    "pre[class~='language-bash']:before": {
-    },
+    'pre[class~="language-text"]:before': {},
+    "pre[class~='language-shell']:before": {},
+    "pre[class~='language-sh']:before": {},
+    "pre[class~='language-bash']:before": {},
     "pre[class~='language-yaml']:before": {
       background: `#ffa8df`,
     },
     "pre[class~='language-yml']:before": {
       background: `#ffa8df`,
     },
-    "pre[class~='language-markdown']:before": {
-    },
+    "pre[class~='language-markdown']:before": {},
     "pre[class~='language-json']:before, pre[class~='language-json5']:before": {
       background: `linen`,
     },
@@ -138,7 +132,7 @@ const code = {
     tabSize: 4,
     hyphens: `none`,
   },
-  ".line-number-style": {
+  '.line-number-style': {
     display: `inline-block`,
     width: `3em`,
     userSelect: `none`,
@@ -146,7 +140,7 @@ const code = {
     textAlign: `center`,
     position: `relative`,
   },
-  ".code-title": {
+  '.code-title': {
     backgroundColor: tint(`primary`, 0.7),
     color: `black`,
     fontSize: 0,
@@ -159,18 +153,18 @@ const code = {
     mx: [0, 0, 0, -3],
     fontSize: [1, 1, 2],
   },
-  ".token-line": {
+  '.token-line': {
     pr: 3,
   },
-  ".highlight-line": {
+  '.highlight-line': {
     backgroundColor: `rgb(2, 55, 81)`,
     borderLeft: `4px solid rgb(2, 155, 206)`,
-    ".line-number-style": {
+    '.line-number-style': {
       width: `calc(3em - 4px)`,
       opacity: 0.5,
       left: `-2px`,
     },
   },
-}
+};
 
-export default code
+export default code;

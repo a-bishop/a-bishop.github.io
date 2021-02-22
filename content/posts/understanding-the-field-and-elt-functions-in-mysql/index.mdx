@@ -1,0 +1,78 @@
+---
+title: Understanding the field() and elt() Functions in MySQL
+date: 2021-02-21
+tags:
+  - MySQL
+---
+
+What are the `field()` and `elt()` functions used for in MySQL? I recently came across them when implementing a voting system and found them to be pretty useful for calculating min and max values from queries with `group by` clauses.
+
+Let's assume we have a database table `user_membership` that records users and the memberships they belong to within an organization. A user can have multiple memberships (ie. there is a one-to-many relationship between users and memberships). Here are a few example rows from our contrived database table:
+
+| id  | userId | membership |
+| --- | ------ | ---------- |
+| 1   | 101    | board      |
+| 2   | 101    | staff      |
+| 3   | 102    | staff      |
+| 4   | 102    | general    |
+| 5   | 103    | general    |
+| 6   | 104    | general    |
+
+We can see that user 101 is a member of 'board' and 'staff', user 102 is a member of 'staff' and 'general', and user 103 and 104 have 'general' memberships.
+
+Now let's say we have a request from an analyst to retrieve the number of users by membership, but only counting users once by their priority membership ("board" > "staff" > "general"). In MySQL, we can achieve this by using [the `field()` function](https://dev.mysql.com/doc/refman/8.0/en/string-functions.html#function_field) and a subquery. The `field()` function will return the index position of a value (the first argument to the function) in a list of values (the following arguments to the function).
+
+```sql
+SELECT userId, membership AS priorityMembership FROM user_membership
+WHERE field(membership, "board", "staff", "general") = (
+  SELECT min(field(membership, "board", "staff", "general"))
+  FROM user_membership t
+  WHERE t.userId = user_membership.userId
+)
+GROUP BY userId;
+```
+
+However, there is a better way to achieve this same calculation which doesn't rely on a subquery. The [`elt()` function](https://dev.mysql.com/doc/refman/8.0/en/string-functions.html#function_elt) allows us to convert the index value back to the corresponding string at the index number specified in the list of arguments.
+
+```sql
+SELECT
+    userId,
+    elt(min(field(membership, "board", "staff", "general")), "board", "staff", "general") AS priorityMembership,
+    min(field(membership, "board", "staff", "general")) AS priorityMembership_integer
+FROM user_membership
+GROUP BY userId;
+```
+
+| userId | priorityMembership | priorityMembership_integer |
+| ------ | ------------------ | -------------------------- |
+| 101    | board              | 1                          |
+| 102    | staff              | 2                          |
+| 103    | general            | 3                          |
+| 104    | general            | 3                          |
+
+From there, we can easily count the numbers for our analyst by grouping on priority membership.
+
+```sql
+SELECT priorityMembership, count(userId) as userCount
+FROM (
+  SELECT
+      userId,
+      elt(min(field(userGroup, "board", "staff", "general")), "board", "staff", "general") AS priorityMembership,
+      min(field(userGroup, "board", "staff", "general")) AS priorityMembership_integer
+  FROM user_membership
+  GROUP BY userId
+)
+GROUP BY priorityMembership;
+```
+
+| priorityMembership | userCount |
+| ------------------ | --------- |
+| board              | 1         |
+| staff              | 1         |
+| general            | 2         |
+
+A couple of gotchas to note about the `field()` and `elt()` functions:
+
+- the indexing starts from the first argument to the function. `SELECT elt(3, 'banana', 'apple', 'orange');` will return 'orange' while `SELECT field('banana', 'banana', 'apple', 'orange')` will return 1.
+- `elt()` Returns NULL if the first argument is less than 1 or greater than the number of arguments.
+- `field()` returns 0 if the first argument is NULL because NULL fails equality comparison with any value.
