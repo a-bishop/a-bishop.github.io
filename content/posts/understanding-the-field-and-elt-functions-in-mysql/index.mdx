@@ -57,8 +57,8 @@ SELECT priorityMembership, count(userId) as userCount
 FROM
   (SELECT
       userId,
-      elt(min(field(userGroup, "board", "staff", "general")), "board", "staff", "general") AS priorityMembership,
-      min(field(userGroup, "board", "staff", "general")) AS priorityMembership_integer
+      elt(min(field(membership, "board", "staff", "general")), "board", "staff", "general") AS priorityMembership,
+      min(field(membership, "board", "staff", "general")) AS priorityMembershipInteger
   FROM user_membership
   GROUP BY userId)
 GROUP BY priorityMembership;
