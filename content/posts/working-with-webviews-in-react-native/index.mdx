@@ -7,7 +7,7 @@ tags:
   - JavaScript
 ---
 
-For those instances when it's impractical or impossible to re-architect an existing web page in React Native, the framework allows us to simply embed them in our apps with the WebView component. Let's look at some of the functionality exposed through the WebView API.
+For those instances when it's impractical or impossible to re-architect an existing web application in React Native, the framework allows us to simply embed these web pages in our apps with the WebView component. Let's look at some of the functionality exposed through the WebView API.
 
 #### Getting started
 
@@ -122,9 +122,9 @@ const WebViewComponent = () => {
 };
 ```
 
-One of the most powerful features of WebViews is the ability to inject JavaScript to do things like remove page elements, disable buttons, and attach event handlers to the JavaScript code within the webpage. For this functionality there are two props that the WebView can take, `injectJavascript` and `injectedJavascript`.
+One of the most powerful features of WebViews is the ability to inject JavaScript to do things like remove page elements, disable buttons, and attach event handlers to the JavaScript code within the page. For this functionality there are two props that the WebView can take, `injectJavascript` and `injectedJavascript`.
 
-`injectedJavascript` only gets evaluated once on load of the WebView, so for most use-cases you'll probably want to use the `injectJavascript` function, which runs for the full lifetime of the component. Used in conjuction with the `onMessage` and `postMessage` APIs, one can create two-way communication channels between the React Native code and the WebView quite easily. In the example below, the WebView component communicates to React Native when it detects that a user has submitted a form element on the webpage.
+`injectedJavascript` only gets evaluated once on load of the WebView, so for most use-cases you'll probably want to use the `injectJavascript` function, which injects the script programmatically every time the `ref` changes. Used in conjuction with the `onMessage` and `postMessage` APIs, it's possible to create two-way communication channels between the React Native code and the WebView. In the example below, the component communicates to React Native when it detects that a user has submitted a form element on the page.
 
 ```jsx
 import { useRef, useState, useEffect } from 'react';
@@ -167,6 +167,6 @@ const WebViewComponent = () => {
 
 #### Conclusion
 
-WebViews are not the most performant way to write a React Native application, but they provide a useful bridge between web interfaces and native code when it would be impractical to fully rebuild the interface natively. Luckily, the WebView component exposes many useful APIs that let us make this bridge happen more seamlessly.
+WebViews are not the most performant way to write a React Native application, but they provide a useful bridge between web interfaces and React Native code when it would be impractical to fully rebuild the interface natively. Luckily, the WebView component exposes many useful APIs to make this transition more seamless.
 
 Hopefully this post has given you some ideas for how to integrate a WebView into your next React Native application. Check out the [React Native WebView API reference docs](https://github.com/react-native-community/react-native-webview/blob/master/docs/Reference.md) for more ideas and examples.
