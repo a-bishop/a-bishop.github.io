@@ -1,11 +1,18 @@
 ---
-title: Projects
-slug: "/projects"
+title: Recent tinkerings
+slug: '/projects'
 ---
 
-import Project from "./components/Project";
+import Project from './components/Project';
 
 <div>
+  <Project
+    title="Circle of Fifths"
+    description="A simple handy tool for learning the circle of fifths. Built with Svelte and CSS custom properties."
+    demoLink="https://andrewnbishop.com/svelte-circle-of-fifths"
+    githubLink="https://github.com/a-bishop/feathers-draw"
+    tech="Svelte, CSS custom properties"
+  />
   <Project
     title="Movies To Watch"
     description="A web app to save and share movie recommendations, using Firebase, React and the Open Movie Database API."
@@ -18,7 +25,7 @@ import Project from "./components/Project";
     description="A real-time collaborative drawing app, using HTML5 Canvas, Feathers.js and neDB, a file-based persistent data store modeled on MongoDB."
     demoLink="https://sandbox.abishop.me"
     githubLink="https://github.com/a-bishop/feathers-draw"
-    tech="Feathers.js, HTML5 Canvas, Web Sockets"
+    tech="Feathers.js, Node.js, HTML5 Canvas, Web Sockets"
   />
   <Project
     title="Drum Machine"
@@ -29,7 +36,7 @@ import Project from "./components/Project";
   />
   <Project
     title="Population Stats"
-    description="A React single page application that allows users to compare up to six country populations in a bar graph. Uses the D3 library."
+    description="A React single page application for comparing country populations in a bar graph. Uses the D3 library."
     demoLink="https://andrewnbishop.com/population-stats"
     githubLink="https://github.com/a-bishop/population-stats"
     tech="React, D3"
@@ -40,12 +47,5 @@ import Project from "./components/Project";
     demoLink="https://github.com/a-bishop/podBlast"
     githubLink="https://github.com/a-bishop/podBlast"
     tech="Swift, XCode, ListenNotes API"
-  />
-  <Project
-    title="Mick's Licks"
-    description="An e-commerce web application built with the LAMP stack to sell used vinyl records, with login verification, a cart system and online payment integration. Created with a team of three other developers as final project for Web Applications class."
-    demoLink="https://github.com/a-bishop/micks-licks"
-    githubLink="https://github.com/a-bishop/micks-licks"
-    tech="JavaScript, HTML, CSS, PHP, MySQL, Bootstrap, GitLab"
   />
 </div>
