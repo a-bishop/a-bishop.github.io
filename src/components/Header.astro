@@ -1,6 +1,7 @@
 ---
 import { NAV, SITE } from "../lib/site";
 import ThemeToggle from "./ThemeToggle.astro";
+import Icon from "./Icon.astro";
 
 const path = Astro.url.pathname.replace(/\/$/, "") || "/";
 const isCurrent = (href: string) => path === href || path.startsWith(`${href}/`);
@@ -26,8 +27,12 @@ const isCurrent = (href: string) => path === href || path.startsWith(`${href}/`)
       </ul>
     </nav>
     <ul class="social-list">
-      <li><a href={SITE.github} rel="me">GitHub</a></li>
-      <li><a href={SITE.linkedin} rel="me">LinkedIn</a></li>
+      <li>
+        <a href={SITE.github} rel="me" aria-label="GitHub" title="GitHub"><Icon name="github" /></a>
+      </li>
+      <li>
+        <a href={SITE.linkedin} rel="me" aria-label="LinkedIn" title="LinkedIn"><Icon name="linkedin" /></a>
+      </li>
     </ul>
   </div>
 </header>

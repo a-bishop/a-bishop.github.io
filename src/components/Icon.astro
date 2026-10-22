@@ -1,0 +1,19 @@
+---
+// Font Awesome brand icons, the same set the old site used (via react-icons).
+// Icons by Font Awesome, licensed CC BY 4.0: https://fontawesome.com/license/free
+import { faGithub, faLinkedin } from "@fortawesome/free-brands-svg-icons";
+
+const icons = { github: faGithub, linkedin: faLinkedin };
+
+interface Props {
+  name: keyof typeof icons;
+  size?: number;
+}
+
+const { name, size = 20 } = Astro.props;
+const [width, height, , , path] = icons[name].icon;
+---
+
+<svg viewBox={`0 0 ${width} ${height}`} width={size} height={size} aria-hidden="true" focusable="false">
+  <path fill="currentColor" d={String(path)} />
+</svg>

@@ -7,6 +7,8 @@ export default defineConfig({
   // Match the old Gatsby URLs, which had no trailing slash.
   trailingSlash: "never",
   build: { format: "directory" },
+  // Keep whitespace between text and inline tags (e.g. "at <a>Treez</a>").
+  compressHTML: false,
   markdown: {
     shikiConfig: {
       themes: { light: "github-light", dark: "github-dark" },
