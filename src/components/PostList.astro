@@ -4,10 +4,11 @@ import { formatDate, isoDate, type Post } from "../lib/posts";
 
 interface Props {
   posts: Post[];
-  showTags?: boolean;
+  /** Dates are hidden in lists for now; each post page still shows its date. */
+  showDates?: boolean;
 }
 
-const { posts, showTags = true } = Astro.props;
+const { posts, showDates = false } = Astro.props;
 ---
 
 <ul class="post-list">
@@ -17,15 +18,13 @@ const { posts, showTags = true } = Astro.props;
         <a class="post-link" href={`/${post.id}`}>
           {post.data.title}
         </a>
-        <p class="post-meta">
-          <time datetime={isoDate(post.data.date)}>{formatDate(post.data.date)}</time>
-          {showTags && post.data.tags.length > 0 && (
-            <>
-              <span aria-hidden="true"> — </span>
-              <TagLinks tags={post.data.tags} />
-            </>
-          )}
-        </p>
+        {(showDates || post.data.tags.length > 0) && (
+          <p class="post-meta">
+            {showDates && <time datetime={isoDate(post.data.date)}>{formatDate(post.data.date)}</time>}
+            {showDates && post.data.tags.length > 0 && <span aria-hidden="true"> — </span>}
+            <TagLinks tags={post.data.tags} />
+          </p>
+        )}
       </li>
     ))
   }
