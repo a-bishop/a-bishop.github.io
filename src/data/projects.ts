@@ -11,7 +11,7 @@ export interface Project {
 /** Shown as cards, in this order. */
 export const projects: Project[] = [
   {
-    title: "lyric-lang",
+    title: "Lyric Lang",
     description:
       "An API that turns song lyrics into language lessons. It pulls out vocabulary, slang, grammar patterns and cultural notes, then builds a study plan with exercises and spaced review.",
     tech: ["Cloudflare Workers", "Hono", "D1", "AI SDK"],
