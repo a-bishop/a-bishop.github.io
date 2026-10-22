@@ -1,0 +1,55 @@
+---
+import { render } from "astro:content";
+import Base from "../layouts/Base.astro";
+import { formatDate, getPosts, isoDate, tagSlug, type Post } from "../lib/posts";
+
+// Posts live at the site root (e.g. /wrapping-mocha-tests-with-a-custom-retry-handler)
+// to keep the URLs from the old Gatsby site.
+export async function getStaticPaths() {
+  const posts = await getPosts();
+  return posts.map((post) => ({ params: { slug: post.id }, props: { post } }));
+}
+
+interface Props {
+  post: Post;
+}
+
+const { post } = Astro.props;
+const { Content } = await render(post);
+const { title, date, tags, note } = post.data;
+const description = post.data.description ?? post.body?.split("\n\n").find((p) => p.trim() && !p.startsWith("#"))?.slice(0, 160);
+---
+
+<Base title={title} description={description} type="article" publishedTime={date.toISOString()}>
+  <article>
+    <header class="article-header">
+      <h1>{title}</h1>
+      <p class="post-meta">
+        <time datetime={isoDate(date)}>{formatDate(date)}</time>
+        {
+          tags.length > 0 && (
+            <>
+              <span aria-hidden="true"> — </span>
+              {tags.map((tag, i) => (
+                <>
+                  {i > 0 && ", "}
+                  <a href={`/tags/${tagSlug(tag)}`}>{tag}</a>
+                </>
+              ))}
+            </>
+          )
+        }
+      </p>
+    </header>
+
+    {note && <aside class="note">{note}</aside>}
+
+    <div class="prose">
+      <Content />
+    </div>
+
+    <footer class="article-footer">
+      <a href="/blog">← All posts</a>
+    </footer>
+  </article>
+</Base>

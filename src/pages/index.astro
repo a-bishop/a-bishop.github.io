@@ -1,0 +1,23 @@
+---
+import Base from "../layouts/Base.astro";
+import PostList from "../components/PostList.astro";
+import { getPosts } from "../lib/posts";
+
+const latest = (await getPosts()).slice(0, 3);
+---
+
+<Base>
+  <section class="hero">
+    <h1>Hi there. <span class="wave" aria-hidden="true">👋</span></h1>
+    <p>
+      I'm Andrew. Welcome to my web dev portfolio, where I post my side projects and (occasionally)
+      publish my thoughts on tech-related topics.
+    </p>
+  </section>
+
+  <div class="section-head">
+    <h2>Latest posts</h2>
+    <a href="/blog">All posts</a>
+  </div>
+  <PostList posts={latest} showTags={false} />
+</Base>
