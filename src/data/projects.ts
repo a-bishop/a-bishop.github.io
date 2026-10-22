@@ -27,18 +27,18 @@ export const topProjects: Project[] = [
 
 export const moreProjects: Project[] = [
   {
-    title: "Population Stats",
-    description: "A React single-page app for comparing country populations in a bar graph, using D3.",
-    tech: ["React", "D3"],
-    demo: "/population-stats",
-    repo: "https://github.com/a-bishop/population-stats",
-  },
-  {
     title: "Movies To Watch",
     description: "A web app to save and share movie recommendations, using Firebase, React and the Open Movie Database API.",
     tech: ["React", "Firebase", "Styled Components"],
     demo: "https://movie-recommendations.netlify.app",
     repo: "https://github.com/a-bishop/movies-to-watch",
+  },
+  {
+    title: "Population Stats",
+    description: "A React single-page app for comparing country populations in a bar graph, using D3.",
+    tech: ["React", "D3"],
+    demo: "/population-stats",
+    repo: "https://github.com/a-bishop/population-stats",
   },
 ];
 
