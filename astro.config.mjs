@@ -9,6 +9,8 @@ export default defineConfig({
   build: { format: "directory" },
   // Keep whitespace between text and inline tags (e.g. "at <a>Treez</a>").
   compressHTML: false,
+  // The blog is the homepage now; keep old /blog links working.
+  redirects: { "/blog": "/" },
   markdown: {
     shikiConfig: {
       themes: { light: "github-light", dark: "github-dark" },

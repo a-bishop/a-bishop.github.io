@@ -1,5 +1,6 @@
 ---
-import { formatDate, isoDate, tagSlug, type Post } from "../lib/posts";
+import TagLinks from "./TagLinks.astro";
+import { formatDate, isoDate, type Post } from "../lib/posts";
 
 interface Props {
   posts: Post[];
@@ -21,12 +22,7 @@ const { posts, showTags = true } = Astro.props;
           {showTags && post.data.tags.length > 0 && (
             <>
               <span aria-hidden="true"> — </span>
-              {post.data.tags.map((tag, i) => (
-                <>
-                  {i > 0 && ", "}
-                  <a href={`/tags/${tagSlug(tag)}`}>{tag}</a>
-                </>
-              ))}
+              <TagLinks tags={post.data.tags} />
             </>
           )}
         </p>

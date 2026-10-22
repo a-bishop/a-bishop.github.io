@@ -1,0 +1,12 @@
+---
+import { tagSlug } from "../lib/posts";
+
+interface Props {
+  tags: string[];
+}
+
+const { tags } = Astro.props;
+// Kept on one line so no stray whitespace lands before the commas.
+---
+
+<span>{tags.map((tag, i) => <>{i > 0 && ", "}<a href={`/tags/${tagSlug(tag)}`}>{tag}</a></>)}</span>

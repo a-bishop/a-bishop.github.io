@@ -8,7 +8,6 @@ export async function GET() {
 
   const urls: { path: string; lastmod?: string }[] = [
     { path: "/" },
-    { path: "/blog" },
     { path: "/projects" },
     { path: "/about" },
     { path: "/tags" },

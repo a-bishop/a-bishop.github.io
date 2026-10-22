@@ -1,7 +1,8 @@
 ---
+import TagLinks from "../components/TagLinks.astro";
 import { render } from "astro:content";
 import Base from "../layouts/Base.astro";
-import { formatDate, getPosts, isoDate, tagSlug, type Post } from "../lib/posts";
+import { formatDate, getPosts, isoDate, type Post } from "../lib/posts";
 
 // Posts live at the site root (e.g. /wrapping-mocha-tests-with-a-custom-retry-handler)
 // to keep the URLs from the old Gatsby site.
@@ -30,12 +31,7 @@ const description = post.data.description ?? post.body?.split("\n\n").find((p) =
           tags.length > 0 && (
             <>
               <span aria-hidden="true"> — </span>
-              {tags.map((tag, i) => (
-                <>
-                  {i > 0 && ", "}
-                  <a href={`/tags/${tagSlug(tag)}`}>{tag}</a>
-                </>
-              ))}
+              <TagLinks tags={tags} />
             </>
           )
         }
@@ -49,7 +45,7 @@ const description = post.data.description ?? post.body?.split("\n\n").find((p) =
     </div>
 
     <footer class="article-footer">
-      <a href="/blog">← All posts</a>
+      <a href="/">← All posts</a>
     </footer>
   </article>
 </Base>
