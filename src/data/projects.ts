@@ -54,10 +54,6 @@ export const projects: Project[] = [
     demo: "/population-stats",
     repo: "https://github.com/a-bishop/population-stats",
   },
-];
-
-/** Older work with no live demo. Repo links only. */
-export const archivedProjects: Project[] = [
   {
     title: "Outdraw",
     description: "A real-time collaborative drawing app using HTML5 Canvas, Feathers.js, web sockets and neDB.",

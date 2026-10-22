@@ -632,31 +632,6 @@ main {
   min-height: 44px;
 }
 
-.archive-list {
-  list-style: none;
-  padding: 0;
-  margin: 0;
-}
-
-.archive-list li {
-  padding: 0.85rem 0;
-  border-bottom: 1px solid var(--divide);
-}
-
-.archive-list li:last-child {
-  border-bottom: 0;
-}
-
-.archive-list a {
-  font-weight: 600;
-}
-
-.archive-list .desc {
-  display: block;
-  color: var(--muted);
-  font-size: 0.9rem;
-}
-
 /* ---------- 404 ---------- */
 .not-found {
   text-align: center;
