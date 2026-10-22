@@ -1,0 +1,15 @@
+---
+import Base from "../layouts/Base.astro";
+import PostList from "../components/PostList.astro";
+import { getPosts } from "../lib/posts";
+
+const posts = await getPosts();
+---
+
+<Base title="Blog" description="Posts by Andrew Bishop on web development, testing and databases.">
+  <div class="section-head" style="margin-top: 0">
+    <h1 style="margin: 0">Blog</h1>
+    <a href="/tags">View all tags</a>
+  </div>
+  <PostList posts={posts} />
+</Base>

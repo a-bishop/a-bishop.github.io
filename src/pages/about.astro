@@ -1,0 +1,24 @@
+---
+import Base from "../layouts/Base.astro";
+import { SITE } from "../lib/site";
+---
+
+<Base title="About" description="About Andrew Bishop, a software engineer on the west coast of Canada.">
+  <h1>About</h1>
+  <div class="prose">
+    <p>Greetings!</p>
+    <p>
+      I'm a software engineer from the west coast of Canada with experience building products for
+      businesses using modern web technologies. I currently work at
+      <a href="https://www.treez.io/">Treez</a>, a commerce platform for cannabis retailers, where I
+      focus on product development with AWS Serverless (Lambda, API Gateway, EventBridge), Postgres,
+      TypeScript and React.
+    </p>
+    <p>
+      I occasionally write <a href="/blog">blog posts</a> about things I'm working on or learning
+      about. I also like to tinker on small side projects to try out new technologies. Check out the
+      <a href="/projects">projects</a> page, or find all the source code on
+      <a href={SITE.github}>GitHub</a>.
+    </p>
+  </div>
+</Base>
