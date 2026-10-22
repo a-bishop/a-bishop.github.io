@@ -10,7 +10,10 @@ const primary = project.demo ?? project.repo;
 ---
 
 <article class="project-card">
-  <h3><a href={primary}>{project.title}</a></h3>
+  <div class="project-head">
+    <h3><a href={primary}>{project.title}</a></h3>
+    {project.inProgress && <span class="project-status">In progress</span>}
+  </div>
   <p>{project.description}</p>
   <ul class="project-tech" aria-label="Built with">
     {project.tech.map((t) => <li>{t}</li>)}

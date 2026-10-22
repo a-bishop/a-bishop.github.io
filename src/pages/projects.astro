@@ -1,19 +1,15 @@
 ---
 import Base from "../layouts/Base.astro";
 import ProjectCard from "../components/ProjectCard.astro";
-import { archivedProjects, moreProjects, topProjects } from "../data/projects";
+import { archivedProjects, projects } from "../data/projects";
 ---
 
-<Base title="Projects" description="Side projects by Andrew Bishop: music tools, data visualization and web apps.">
+<Base title="Projects" description="Side projects by Andrew Bishop: music tools, language learning, data visualization and web apps.">
   <h1>Projects</h1>
   <p>Small things I've built to learn new tools.</p>
 
-  <ul class="project-grid top">
-    {topProjects.map((project) => <li><ProjectCard project={project} /></li>)}
-  </ul>
-
-  <ul class="project-grid more">
-    {moreProjects.map((project) => <li><ProjectCard project={project} /></li>)}
+  <ul class="project-grid">
+    {projects.map((project) => <li><ProjectCard project={project} /></li>)}
   </ul>
 
   <h2>Archive</h2>

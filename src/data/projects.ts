@@ -4,10 +4,27 @@ export interface Project {
   tech: string[];
   repo: string;
   demo?: string;
+  /** Shows an "In progress" label on the card. */
+  inProgress?: boolean;
 }
 
-/** Shown first, as larger cards, with no heading. */
-export const topProjects: Project[] = [
+/** Shown as cards, in this order. */
+export const projects: Project[] = [
+  {
+    title: "lyric-lang",
+    description:
+      "An API that turns song lyrics into language lessons. It pulls out vocabulary, slang, grammar patterns and cultural notes, then builds a study plan with exercises and spaced review.",
+    tech: ["Cloudflare Workers", "Hono", "D1", "AI SDK"],
+    repo: "https://github.com/a-bishop/lyric-lang",
+    inProgress: true,
+  },
+  {
+    title: "Remix Cloudflare Starter",
+    description:
+      "An opinionated Remix starter for Cloudflare, with Google sign-in, D1 and KV storage, and Drizzle ORM.",
+    tech: ["Remix", "Cloudflare", "Drizzle", "Vitest"],
+    repo: "https://github.com/a-bishop/remix-cloudflare-starter",
+  },
   {
     title: "Circle of Fifths",
     description: "A simple, handy tool for learning the circle of fifths.",
@@ -23,9 +40,6 @@ export const topProjects: Project[] = [
     demo: "/drum-machine",
     repo: "https://github.com/a-bishop/drum-machine",
   },
-];
-
-export const moreProjects: Project[] = [
   {
     title: "Movies To Watch",
     description: "A web app to save and share movie recommendations, using Firebase, React and the Open Movie Database API.",
