@@ -8,7 +8,7 @@ export const SITE = {
 };
 
 export const NAV = [
-  { label: "Blog", href: "/blog" },
+  { label: "Blog", href: "/" },
   { label: "Projects", href: "/projects" },
   { label: "About", href: "/about" },
 ];
