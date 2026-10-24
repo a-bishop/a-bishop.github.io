@@ -9,14 +9,13 @@ export async function GET(context: APIContext) {
   return rss({
     title: SITE.title,
     description: SITE.description,
-    site: context.site ?? SITE.url,
-    trailingSlash: false,
+    site: context.site!,
     items: posts.map((post) => ({
       title: post.data.title,
       pubDate: post.data.date,
       description: post.data.description,
       categories: post.data.tags,
-      link: `/${post.id}`,
+      link: `/${post.id}/`,
     })),
   });
 }

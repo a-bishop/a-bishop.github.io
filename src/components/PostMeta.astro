@@ -1,0 +1,22 @@
+---
+import TagLinks from "./TagLinks.astro";
+import { formatDate, isoDate } from "../lib/posts";
+
+interface Props {
+  tags: string[];
+  /** Leave out to show tags only. */
+  date?: Date;
+}
+
+const { tags, date } = Astro.props;
+---
+
+{
+  (date || tags.length > 0) && (
+    <p class="post-meta">
+      {date && <time datetime={isoDate(date)}>{formatDate(date)}</time>}
+      {date && tags.length > 0 && <span aria-hidden="true"> — </span>}
+      {tags.length > 0 && <TagLinks tags={tags} />}
+    </p>
+  )
+}

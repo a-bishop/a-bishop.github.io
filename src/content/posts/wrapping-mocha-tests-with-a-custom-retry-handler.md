@@ -13,7 +13,7 @@ When writing integration tests for interactions with external services, it can b
 
 For instance, a request sent to an endpoint that responds via webhook and triggers a database update could take longer than expected to complete. With the Mocha testing framework, the naive solution would be to add a lengthy `setTimeout` function after the external call.
 
-#### Retry handlers
+## Retry handlers
 
 While writing integration tests in Mocha for the payment platform at Change.org, I implemented a simple higher-order function that would allow us to avoid the use of these heavy-handed timeouts. We wanted to be able to retry the test if it failed, using increasing timeouts calculated on each run.
 

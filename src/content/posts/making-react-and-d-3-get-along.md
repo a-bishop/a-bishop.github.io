@@ -10,7 +10,7 @@ tags:
 
 D3.js is a powerful data visualization library, but it's not always the easiest to integrate with React. Both libraries handle changes to application state by making updates to the DOM behind the scenes, and when these node mutations are combined they can produce some unexpected side effects. However, by using only selected functions from D3 in our React projects we can achieve compelling results.
 
-#### What is D3.js?
+## What is D3.js?
 
 D3 is a JavaScript library that can be used to manipulate web documents in a way that is much more powerful than with plain JavaScript DOM manipulation. It allows developers to display complex datasets in a variety of formats and to produce animations.
 
@@ -37,7 +37,7 @@ d3.selectAll('circle')
 
 These examples are just scratching the surface of what D3 is capable of. The D3 community has produced some incredible work, and I would recommend checking out some of the [cool projects](https://github.com/d3/d3/wiki/Gallery) that have been created with the tool if you're looking to dive deeper. Today I'm only going to touch on a few notable functions that we can use to help us generate a simple data visualization within our React application.
 
-#### Bar charts in React with D3
+## Bar charts in React with D3
 
 I recently completed a project which involved fetching data from the World Population API, and I needed to be able to compare anywhere from two to six different countries' populations in a dynamic bar graph. D3 is great for this use case, as there are built-in functions for generating a linear scale based on the data being passed in.
 

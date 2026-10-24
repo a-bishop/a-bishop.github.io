@@ -29,7 +29,7 @@ export const projects: Project[] = [
     title: "Circle of Fifths",
     description: "A simple, handy tool for learning the circle of fifths.",
     tech: ["Svelte", "CSS custom properties"],
-    demo: "/svelte-circle-of-fifths",
+    demo: "/svelte-circle-of-fifths/",
     repo: "https://github.com/a-bishop/svelte-circle-of-fifths",
   },
   {
@@ -37,7 +37,7 @@ export const projects: Project[] = [
     description:
       "A drum machine and arpeggiator built with Tone.js and lit-element, a base class for creating Web Components.",
     tech: ["Tone.js", "Web Components"],
-    demo: "/drum-machine",
+    demo: "/drum-machine/",
     repo: "https://github.com/a-bishop/drum-machine",
   },
   {
@@ -51,7 +51,7 @@ export const projects: Project[] = [
     title: "Population Stats",
     description: "A React single-page app for comparing country populations in a bar graph, using D3.",
     tech: ["React", "D3"],
-    demo: "/population-stats",
+    demo: "/population-stats/",
     repo: "https://github.com/a-bishop/population-stats",
   },
   {

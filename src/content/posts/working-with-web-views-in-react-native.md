@@ -11,7 +11,7 @@ note: Written in 2019. React Native and react-native-webview have changed a lot 
 
 For those instances when it's impractical or impossible to re-architect an existing web application in React Native, the framework allows us to simply embed these web pages in our apps with the WebView component. Let's look at some of the functionality exposed through the WebView API.
 
-#### Getting started
+## Getting started
 
 The React Native team is planning the [imminent removal of WebViews](https://facebook.github.io/react-native/docs/webview) from the core library as part of its efforts to reduce the framework's size. As a result, we'll need to import the WebView component from a separate package, namely `react-native-webview`. So, let's `npm install` it into our existing React Native project to get started.
 
@@ -31,7 +31,7 @@ Using the WebView component couldn't be easier. Just pass it a `source` prop, wh
 <WebView source={{ uri: 'https://example.com' }} />
 ```
 
-#### Useful WebView Properties and APIs
+## Useful WebView Properties and APIs
 
 Once we have the WebView component set up, maybe we want to show users a placeholder while it is rendering. For this, we can hook into the `onLoadProgress` prop and use the progress attribute of the `nativeEvent` object to determine how long to display our placeholder, which in this case is an `ActivityIndicator` component.
 
@@ -167,7 +167,7 @@ const WebViewComponent = () => {
 };
 ```
 
-#### Conclusion
+## Conclusion
 
 WebViews are not the most performant way to write a React Native application, but they provide a useful bridge between web interfaces and React Native code when it would be impractical to fully rebuild the interface natively. Luckily, the WebView component exposes many useful APIs to make this transition more seamless.
 

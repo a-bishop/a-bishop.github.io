@@ -3,9 +3,33 @@ import kebabCase from "lodash.kebabcase";
 
 export type Post = CollectionEntry<"posts">;
 
-/** Published posts, newest first. */
+/**
+ * Posts are served at /<file-name>/, so these names would clash with pages
+ * on this site or with the demo sites that share the domain.
+ */
+const RESERVED_SLUGS = new Set([
+  "about",
+  "projects",
+  "tags",
+  "blog",
+  "404",
+  "rss.xml",
+  "sitemap.xml",
+  "drum-machine",
+  "population-stats",
+  "svelte-circle-of-fifths",
+]);
+
+/** Posts, newest first. Drafts show in `npm run dev` but are never published. */
 export async function getPosts(): Promise<Post[]> {
-  const posts = await getCollection("posts", ({ data }) => !data.draft);
+  const posts = await getCollection("posts", ({ data }) => import.meta.env.DEV || !data.draft);
+  for (const post of posts) {
+    if (RESERVED_SLUGS.has(post.id)) {
+      throw new Error(
+        `Post "${post.id}.md" would be served at /${post.id}/, which is already taken. Rename the file.`,
+      );
+    }
+  }
   return posts.sort((a, b) => b.data.date.valueOf() - a.data.date.valueOf());
 }
 

@@ -11,7 +11,7 @@ const primary = project.demo ?? project.repo;
 
 <article class="project-card">
   <div class="project-head">
-    <h3><a href={primary}>{project.title}</a></h3>
+    <h2><a href={primary}>{project.title}</a></h2>
     {project.inProgress && <span class="project-status">In progress</span>}
   </div>
   <p>{project.description}</p>
@@ -19,7 +19,7 @@ const primary = project.demo ?? project.repo;
     {project.tech.map((t) => <li>{t}</li>)}
   </ul>
   <div class="project-links">
-    {project.demo && <a href={project.demo}>Live demo</a>}
-    <a href={project.repo}>Source on GitHub</a>
+    {project.demo && <a href={project.demo}>Live demo<span class="visually-hidden"> of {project.title}</span></a>}
+    <a href={project.repo}>Source on GitHub<span class="visually-hidden"> for {project.title}</span></a>
   </div>
 </article>
