@@ -1,8 +1,8 @@
 ---
-import TagLinks from "../components/TagLinks.astro";
+import PostMeta from "../components/PostMeta.astro";
 import { render } from "astro:content";
 import Base from "../layouts/Base.astro";
-import { formatDate, getPosts, isoDate, type Post } from "../lib/posts";
+import { getPosts, type Post } from "../lib/posts";
 
 // Posts live at the site root (e.g. /wrapping-mocha-tests-with-a-custom-retry-handler)
 // to keep the URLs from the old Gatsby site.
@@ -17,25 +17,14 @@ interface Props {
 
 const { post } = Astro.props;
 const { Content } = await render(post);
-const { title, date, tags, note } = post.data;
-const description = post.data.description ?? post.body?.split("\n\n").find((p) => p.trim() && !p.startsWith("#"))?.slice(0, 160);
+const { title, description, date, tags, note } = post.data;
 ---
 
-<Base title={title} description={description} type="article" publishedTime={date.toISOString()}>
+<Base title={title} description={description} type="article" publishedTime={date.toISOString()} section="/">
   <article>
     <header class="article-header">
       <h1>{title}</h1>
-      <p class="post-meta">
-        <time datetime={isoDate(date)}>{formatDate(date)}</time>
-        {
-          tags.length > 0 && (
-            <>
-              <span aria-hidden="true"> — </span>
-              <TagLinks tags={tags} />
-            </>
-          )
-        }
-      </p>
+      <PostMeta tags={tags} date={date} />
     </header>
 
     {note && <aside class="note">{note}</aside>}

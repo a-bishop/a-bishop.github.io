@@ -17,9 +17,9 @@ const { name, posts } = Astro.props;
 ---
 
 <Base title={name} description={`Posts tagged ${name}.`}>
-  <div class="section-head" style="margin-top: 0">
-    <h1 style="margin: 0">{name}</h1>
-    <a href="/tags">View all tags</a>
+  <div class="page-head">
+    <h1>{name}</h1>
+    <a href="/tags/">View all tags</a>
   </div>
   <PostList posts={posts} />
 </Base>

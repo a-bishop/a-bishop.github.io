@@ -1,6 +1,29 @@
+/* ---------- Fonts ---------- */
+/* Local fallback sized to match IBM Plex Sans, so text doesn't shift when
+   the web font finishes loading. Metrics from Astro's font fallback tooling. */
+@font-face {
+  font-family: "IBM Plex Sans Fallback";
+  src: local("Arial"), local("ArialMT"), local("Liberation Sans");
+  font-weight: 400 600;
+  size-adjust: 98.92%;
+  ascent-override: 103.62%;
+  descent-override: 27.8%;
+  line-gap-override: 0%;
+}
+
+@font-face {
+  font-family: "IBM Plex Sans Fallback";
+  src: local("Arial Bold"), local("Arial-BoldMT"), local("Liberation Sans Bold");
+  font-weight: 700;
+  size-adjust: 91.88%;
+  ascent-override: 111.56%;
+  descent-override: 29.93%;
+  line-gap-override: 0%;
+}
+
 /* ---------- Tokens ---------- */
 :root {
-  --font-body: "IBM Plex Sans", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto,
+  --font-body: "IBM Plex Sans", "IBM Plex Sans Fallback", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto,
     "Helvetica Neue", Arial, "Noto Sans", sans-serif, "Apple Color Emoji", "Segoe UI Emoji";
   --font-mono: ui-monospace, SFMono-Regular, Menlo, Consolas, "Liberation Mono", monospace;
 
@@ -15,7 +38,6 @@
   --accent-soft: rgba(107, 70, 193, 0.1);
   --divide: #cbd5e0;
   --surface: #f7fafc;
-  --code-bg: #f6f8fa;
   --code-inline-bg: rgba(107, 70, 193, 0.08);
 }
 
@@ -24,12 +46,11 @@
   --text: #cbd5e0;
   --heading: #ffffff;
   --muted: #a0aec0;
-  --accent: #9f7aea;
-  --accent-soft: rgba(159, 122, 234, 0.15);
+  --accent: #a88bf0;
+  --accent-soft: rgba(168, 139, 240, 0.15);
   --divide: #2d3748;
   --surface: #232a37;
-  --code-bg: #0d1117;
-  --code-inline-bg: rgba(159, 122, 234, 0.15);
+  --code-inline-bg: rgba(168, 139, 240, 0.15);
   color-scheme: dark;
 }
 
@@ -133,13 +154,26 @@ hr {
   left: -9999px;
   top: 0.5rem;
   padding: 0.5rem 1rem;
-  background: var(--accent);
+  /* Fixed colours: white on the lighter dark-mode accent fails contrast. */
+  background: #6b46c1;
   color: #fff;
   z-index: 10;
 }
 
 .skip-link:focus {
   left: 0.5rem;
+}
+
+.visually-hidden {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  margin: -1px;
+  padding: 0;
+  overflow: hidden;
+  clip: rect(0 0 0 0);
+  white-space: nowrap;
+  border: 0;
 }
 
 /* ---------- Layout ---------- */
@@ -245,6 +279,13 @@ main {
   color: var(--accent);
 }
 
+/* Not colour alone: underline the current page. */
+.nav-list a[aria-current="page"] {
+  text-decoration: underline;
+  text-decoration-thickness: 2px;
+  text-underline-offset: 0.4em;
+}
+
 .social-list {
   margin-right: -0.6rem;
 }
@@ -287,18 +328,6 @@ main {
 }
 
 /* ---------- Home (blog) ---------- */
-.visually-hidden {
-  position: absolute;
-  width: 1px;
-  height: 1px;
-  margin: -1px;
-  padding: 0;
-  overflow: hidden;
-  clip: rect(0 0 0 0);
-  white-space: nowrap;
-  border: 0;
-}
-
 .list-footer {
   margin: 2.5rem 0 0;
 }
@@ -309,20 +338,20 @@ main {
   min-height: 44px;
 }
 
-.section-head {
+.page-head {
   display: flex;
   flex-wrap: wrap;
   align-items: baseline;
   justify-content: space-between;
   gap: 0.25rem 1rem;
-  margin: 3rem 0 1rem;
+  margin: 0 0 1rem;
 }
 
-.section-head h2 {
+.page-head h1 {
   margin: 0;
 }
 
-.section-head a {
+.page-head a {
   display: inline-block;
   padding: 0.5rem 0;
 }
@@ -358,8 +387,9 @@ main {
 
 .post-meta a {
   color: inherit;
-  /* Larger tap area without changing the line's layout */
-  padding: 0.85rem 0.15rem;
+  /* Larger tap area without changing the line's layout (kept small enough
+     not to overlap the post title above) */
+  padding: 0.35rem 0.15rem;
   margin: 0 -0.15rem;
 }
 
@@ -407,6 +437,14 @@ main {
   background: var(--accent-soft);
   border-radius: 0 6px 6px 0;
   font-size: 0.925rem;
+}
+
+.prose h2 {
+  font-size: 1.3rem;
+}
+
+.prose h3 {
+  font-size: 1.15rem;
 }
 
 .prose blockquote {
@@ -571,7 +609,7 @@ main {
   margin: 0 0 0.5rem;
 }
 
-.project-card h3 {
+.project-card h2 {
   margin: 0;
   font-size: 1.15rem;
 }
@@ -586,12 +624,12 @@ main {
   white-space: nowrap;
 }
 
-.project-card h3 a {
+.project-card h2 a {
   color: var(--heading);
   text-decoration: none;
 }
 
-.project-card h3 a:hover {
+.project-card h2 a:hover {
   color: var(--accent);
 }
 

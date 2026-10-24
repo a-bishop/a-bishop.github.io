@@ -11,7 +11,7 @@ const tags = await getTags();
     {
       tags.map((tag) => (
         <li>
-          <a href={`/tags/${tag.slug}`}>
+          <a href={`/tags/${tag.slug}/`}>
             {tag.name}
             <span class="count">{tag.posts.length}</span>
           </a>

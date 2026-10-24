@@ -13,9 +13,14 @@ interface Props {
   description?: string;
   type?: "website" | "article";
   publishedTime?: string;
+  /** Keep this page out of search results (e.g. the 404 page). */
+  noindex?: boolean;
+  /** Nav link to highlight when the URL alone doesn't say (e.g. "/" on post pages). */
+  section?: string;
 }
 
-const { title, description = SITE.description, type = "website", publishedTime } = Astro.props;
+const { title, description = SITE.description, type = "website", publishedTime, noindex = false, section } =
+  Astro.props;
 const pageTitle = title ? `${title} | ${SITE.title}` : `${SITE.title} – Software Developer`;
 const canonical = new URL(Astro.url.pathname, Astro.site).href;
 const ogImage = new URL("/og.png", Astro.site).href;
@@ -28,7 +33,7 @@ const ogImage = new URL("/og.png", Astro.site).href;
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <title>{pageTitle}</title>
     <meta name="description" content={description} />
-    <link rel="canonical" href={canonical} />
+    {noindex ? <meta name="robots" content="noindex" /> : <link rel="canonical" href={canonical} />}
     <link rel="icon" href="/favicon.ico" sizes="any" />
     <link rel="alternate" type="application/rss+xml" title={SITE.title} href="/rss.xml" />
     <meta name="theme-color" content="#6B46C1" />
@@ -58,7 +63,7 @@ const ogImage = new URL("/og.png", Astro.site).href;
   <body>
     <a class="skip-link" href="#main">Skip to content</a>
     <div class="container">
-      <Header />
+      <Header section={section} />
       <main id="main">
         <slot />
       </main>

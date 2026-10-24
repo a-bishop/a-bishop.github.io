@@ -4,8 +4,9 @@ import { codeTitle } from "./src/lib/shiki-code-title.mjs";
 
 export default defineConfig({
   site: "https://andrewnbishop.com",
-  // Match the old Gatsby URLs, which had no trailing slash.
-  trailingSlash: "never",
+  // GitHub Pages serves each page from <path>/index.html and 301-redirects
+  // /path to /path/, so link to the trailing-slash form directly.
+  trailingSlash: "always",
   build: { format: "directory" },
   // Keep whitespace between text and inline tags (e.g. "at <a>Treez</a>").
   compressHTML: false,
@@ -13,7 +14,8 @@ export default defineConfig({
   redirects: { "/blog": "/" },
   markdown: {
     shikiConfig: {
-      themes: { light: "github-light", dark: "github-dark" },
+      // The "-default" variants meet WCAG AA contrast; the classic ones don't.
+      themes: { light: "github-light-default", dark: "github-dark-default" },
       defaultColor: false,
       transformers: [codeTitle()],
     },
